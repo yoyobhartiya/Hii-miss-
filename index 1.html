@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Shoes | Limited Offer</title>
+    <style>
+        /* बेसिक स्टाइलिंग और कलर पैलेट */
+        :root {
+            --bg-color: #000000; /* Black Background */
+            --primary-color: #FF8C00; /* Kesari/Orange for Actions */
+            --secondary-color: #2ECC71; /* Green for Trust/Highlights */
+            --text-color: #FFFFFF;
+            --text-muted: #CCCCCC;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            text-align: center;
+            overflow-x: hidden; /* Prevent main page scroll */
+        }
+
+        /* टॉप ऑफर बार */
+        .top-bar {
+            background: var(--primary-color);
+            color: black;
+            padding: 12px;
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* हीरो सेक्शन */
+        .hero {
+            padding: 40px 20px 20px 20px;
+        }
+
+        h1 { font-size: 2.2rem; margin-bottom: 5px; font-weight: 800; }
+        .sub-title { color: var(--text-muted); font-size: 1rem; margin-top: 0; margin-bottom: 20px;}
+        .price { font-size: 1.8rem; font-weight: bold; color: var(--primary-color); margin-bottom: 25px; }
+        .price s { color: var(--text-muted); font-size: 1.2rem; margin-right: 10px;}
+
+        /* --- होरिजेंटल स्क्रॉल प्रॉडक्ट गैलरी --- */
+        .gallery-container {
+            width: 100%;
+            overflow-x: auto; /* Enable horizontal scroll */
+            white-space: nowrap; /* Keep images in one line */
+            padding: 10px 0;
+            -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
+            scrollbar-width: none; /* Hide scrollbar for Firefox */
+        }
+
+        .gallery-container::-webkit-scrollbar {
+            display: none; /* Hide scrollbar for Chrome/Safari */
+        }
+
+        .gallery-item {
+            display: inline-block;
+            width: 80%; /* Show 80% of image, indicating more */
+            max-width: 350px;
+            margin: 0 10px;
+            vertical-align: top;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            border: 2px solid #222;
+            transition: 0.3s;
+        }
+        
+        .gallery-item img:hover { border-color: var(--primary-color); }
+        .scroll-hint { color: var(--text-muted); font-size: 12px; margin-top: 5px;}
+
+        /* --- बटन स्टाइल (Kesari) --- */
+        .buy-btn-container {
+            position: sticky; /* Make button stick to bottom on mobile */
+            bottom: 20px;
+            padding: 20px;
+            z-index: 100;
+        }
+
+        .buy-btn {
+            background-color: var(--primary-color);
+            color: black;
+            padding: 18px 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(255, 140, 0, 0.4);
+            transition: 0.3s;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .buy-btn:hover {
+            background-color: #e67e00;
+            transform: scale(1.03);
+        }
+
+        /* टाइमर सेक्शन (Green) */
+        .timer-box {
+            background: #111;
+            padding: 20px;
+            margin: 30px auto;
+            max-width: 450px;
+            border: 2px dashed var(--secondary-color);
+            border-radius: 10px;
+        }
+
+        .timer-box p { margin: 0 0 10px 0; color: var(--secondary-color); font-weight: bold;}
+
+        .timer {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--text-color);
+            letter-spacing: 2px;
+        }
+
+        /* --- प्रॉडक्ट पूरा डिस्क्रिप्शन --- */
+        .description-section {
+            padding: 40px 20px;
+            background-color: #0a0a0a;
+            text-align: left;
+            max-width: 700px;
+            margin: 0 auto;
+            border-radius: 15px;
+        }
+
+        .description-section h2 {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            display: inline-block;
+            padding-bottom: 5px;
+            margin-bottom: 25px;
+        }
+
+        .desc-item {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .desc-icon {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            margin-top: -3px;
+        }
+
+        .desc-text h4 { margin: 0 0 5px 0; color: var(--text-color); }
+        .desc-text p { margin: 0; color: var(--text-muted); line-height: 1.5; font-size: 0.95rem;}
+
+        /* --- भरोसा जगाने वाले आइकॉन (Trust Section) --- */
+        .trust-section {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 30px 20px;
+            background: #111;
+            margin-top: 40px;
+        }
+
+        .trust-item {
+            text-align: center;
+            max-width: 100px;
+        }
+
+        .trust-icon {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .trust-item p { margin: 0; font-size: 12px; color: var(--text-muted); font-weight: bold;}
+
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">⚡ महा सेल: अगले 24 घंटों के लिए 50% की भारी छूट! + फ्री डिलीवरी</div>
+
+    <section class="hero">
+        <h1>Premium Air-Sport Pro</h1>
+        <p class="sub-title">स्टाइल, आराम और मजबूती - सब एक साथ</p>
+        
+        <p class="price"><s>₹2,999</s> <span>₹1,299</span></p>
+    </section>
+
+    <div class="gallery-container">
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=600&auto=format&fit=crop" alt="Shoe 1"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=600&auto=format&fit=crop" alt="Shoe 2"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?q=80&w=600&auto=format&fit=crop" alt="Shoe 3"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?q=80&w=600&auto=format&fit=crop" alt="Shoe 4"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?q=80&w=600&auto=format&fit=crop" alt="Shoe 5"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1581101767113-1677fe2b4bc6?q=80&w=600&auto=format&fit=crop" alt="Shoe 6"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1605348532760-6753d2c43329?q=80&w=600&auto=format&fit=crop" alt="Shoe 7"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1579338559194-a162d19bf842?q=80&w=600&auto=format&fit=crop" alt="Shoe 8"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1511556840939-242312676f92?q=80&w=600&auto=format&fit=crop" alt="Shoe 9"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1514989940723-e8e51635b782?q=80&w=600&auto=format&fit=crop" alt="Shoe 10"></div>
+    </div>
+    <p class="scroll-hint">👉 बाकी फोटो देखने के लिए बाएं स्क्रॉल करें</p>
+
+    <div class="timer-box">
+        <p>⚠️ यह ऑफर खत्म होने में समय बाकी:</p>
+        <div id="countdown" class="timer">00h 00m 00s</div>
+    </div>
+
+    <section class="description-section">
+        <h2>जूते की खासियतें</h2>
+
+        <div class="desc-item">
+            <div class="desc-icon">✓</div>
+            <div class="desc-text">
+                <h4>अल्ट्रा-लाइटवेट डिजाइन</h4>
+                <p>इतना हल्का कि आपको महसूस ही नहीं होगा कि आपने कुछ पहना है। जिम, रनिंग और वॉक के लिए एकदम सही।</p>
+            </div>
+        </div>
+
+        <div class="desc-item">
+            <div class="desc-icon">✓</div>
+            <div class="desc-text">
+                <h4>ब्रीदेबल (Breathable) मटीरियल</h4>
+                <p>खास जालीदार फैब्रिक हवा को अंदर-बाहर जाने देता है, जिससे पैरों में पसीना और बदबू नहीं आती।</p>
+            </div>
+        </div>
+
+        <div class="desc-item">
+            <div class="desc-icon">✓</div>
+            <div class="desc-text">
+                <h4>एंटी-स्किड रबर सोल</h4>
+                <p>प्रीमियम रबर सोल हर सतह पर मजबूत ग्रिप देता है, ताकि आप फिसलें नहीं।</p>
+            </div>
+        </div>
+
+        <div class="desc-item">
+            <div class="desc-icon">✓</div>
+            <div class="desc-text">
+                <h4>शॉक-एब्जॉर्प्शन टेक्नोलॉजी</h4>
+                <p>कूदते या दौड़ते समय यह आपके पैरों और घुटनों पर पड़ने वाले झटके को कम करता है।</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="trust-section">
+        <div class="trust-item">
+            <div class="trust-icon">🤝</div>
+            <p>Cash on Delivery</p>
+        </div>
+        <div class="trust-item">
+            <div class="trust-icon">🔄</div>
+            <p>Easy 7 Days Return</p>
+        </div>
+        <div class="trust-item">
+            <div class="trust-icon">🚚</div>
+            <p>Free Shipping</p>
+        </div>
+    </div>
+
+    <div class="buy-btn-container">
+        <button class="buy-btn">अभी खरीदें - लिमिटेड स्टॉक</button>
+        <p style="font-size: 12px; color: var(--text-muted); margin-top: 10px;">*आपका ऑर्डर पूरी तरह सुरक्षित है।</p>
+    </div>
+
+    <script>
+        // टाइमर के लिए छोटा सा कोड (4 घंटे का काउंटडाउन)
+        function startTimer(duration, display) {
+            var timer = duration, hours, minutes, seconds;
+            setInterval(function () {
+                hours = parseInt(timer / 3600, 10);
+                minutes = parseInt((timer % 3600) / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                hours = hours < 10 ? "0" + hours : hours;
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = hours + "h " + minutes + "m " + seconds + "s ";
+
+                if (--timer < 0) { 
+                    timer = duration; // समय खत्म होने पर फिर से शुरू (टेस्टिंग के लिए)
+                }
+            }, 1000);
+        }
+        window.onload = function () {
+            var fourHours = 60 * 60 * 4, // 4 घंटे सेकंड में
+                display = document.querySelector('#countdown');
+            startTimer(fourHours, display);
+        };
+    </script>
+
+</body>
+</html>
